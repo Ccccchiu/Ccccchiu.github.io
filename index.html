@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chiu Kit WONG</title>
-    <link rel="stylesheet" href="Chiu Kit WONG.css">
+    <title>Testing LLMs' Recognition of Scrambled Language</title>
+    <link rel="stylesheet" href="finalSite.css">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <div class="logo">Chiu Kit WONG</div>
+            <div class="title">Testing LLMs' Recognition of Scrambled Language</div>
+            <p>WONG Chiu Kit(57287183)   <a href="mailto:chiukwong7-c@my.cityu.edu.hk">chiukwong7-c@my.cityu.edu.hk</a></p>
             <nav>
                 <ul>
-                    <li><a href="#Home">Home</a></li>
-                    <li><a href="#Aboutme">About me</a></li>
-                    <li><a href="#Comments">Comments</a></li>
+                    <li><a href="#Introduction">Introduction</a></li>
+                    <li><a href="#Method">Method</a></li>
+                    <li><a href="#Result">Result</a></li>
+                    <li><a href="#Discussion">discussion</a></li>
+                    <li><a href="#Conculsion">Conculsion</a></li>
+                    <li><a href="#Reference">Reference</a></li>
                 </ul>
             </nav>
 
         </header>
 
-        <!-- Hero Section -->
-        <section id="Home" class="hero">
-            <div class="container hero-content">
-                <h1>Hi! Welcome to my first mini personal webpage!</h1>
-                <p>This is an assignment for the course LT3210 Electronic Publishing, which includes my self-introduction and comments for the canteens in City University of Hong Kong. This webpage was completed under the guidance of <a href="https://huhailinguist.github.io/">Dr. Hai Hu</a>.</p>
+        <!-- Introdation Section -->
+        <section id="Introduction" class="Introduction">
+            <h2 class="section-title">Introduction</h2>
+            <div class="Introduction-container">
+                <p>Human beings possess a remarkable ability to comprehend jumbled context. Read the following text:</p>
+                <p>" Typoglycemia refers to the pheonmneon where poeple can raed text even when the lettres in the midlde of wrods are scrambled, as long as the fisrt and last letters are in the crorect poistion."</p>
+                <p>You may have noticed that several words in this explanation of Typoglycemia have misplaced letters, such as " pheonmneon ", " poeple ", and " raed ". Despite these letter transpositions, we can still recognize them. This phenomenon, termed Typoglycemia, is widespread in human reading and is used in psychology experiments to study human language cognition (Johnson et al.,2007). Research has points out that while adjacent letter transpositions extend reading time, readers still maintain a high level of overall text comprehension. Humans possess a unique cognitive mechanism that enables us to understand scrambled language(White, S. J.,2008).</p>
+                <p>Today, many large language models (LLMs) are emerging one after another and they have become a research hotspot. This raises an interesting question: Can they understand scrambled text just like humans? I will use scrambled sentences as a testing tool to explore the ability of different LLMs to correctly comprehend scrambled sentences.</p>
             </div>
         </section>
 
-         <!-- About me Section -->
-        <section id="Aboutme" class="Aboutme">
-            <h2 class="section-title">Self-introduction</h2>
-            <div class="about-container">
-                <div class="clearfix">
-                    <P>My name is Chiu Kit Wong, you can call me Kira. I’m an undergraduate student at <a href="https://www.cityu.edu.hk/">City University of Hong Kong</a>, majoring in <a href="https://lt.cityu.edu.hk/">Linguistics and  Language Applications</a>.</P>
-                    <p></p>
-                    <p style="margin-top: 2em;">
-                         <a href="mailto:chiukwong7-c@my.cityu.edu.hk">Contact Me</a>:chiukwong7-c@my.cityu.edu.hk</p>
+         <!-- Method Section -->
+        <section id="Method" class="Method">
+            <h2 class="section-title">Method</h2>
+            <div class="Method-container">
+                <p><strong>Materials</strong> 
+                    <br> Questions or tasks were designed, covering topics such as geography, history, and mathematics. Each item was structured to have only one correct answer or a clear set of criteria to ensure objective and accurate evaluation of responses.</p>
+
+                <p><strong>Scrambling Conditions</strong>
+                    <br>Three types of scrambled text were implemented, each varying in degree and structure (*n = number of scrambled sentences*):
+                </p>
+                <p>1. Typoglycemia (lexical scrambling)<br>•	1.1: Typoglycemia with preserved initial letters (n=2)<br>•	1.2: Typoglycemia with preserved initial letters and one omitted letter  (n=2)<br>•	1.3: Complete letter scrambling including initial letters  (n=2)<br>•	1.4: Typoglycemia with two omitted letters  (n=2)
+                </p>
+                
+                <p>2. Syntactic scrambling (grammatical scrambling)<br>•	2.1: Minor adjacent word transposition (n=2)<br>•	2.2: Moderate scrambling of core constituents (subject/verb/object) (n=4)<br>•	2.3: Severe scrambling disrupting specific syntactic structures (e.g., interrogatives, passives) (n=4)</p>
+
+                <p>3. Combined scrambling<br>
+                 Extreme scrambling combining both typoglycemia and syntactic scrambling (n=35), including 5 complex and long sentences featuring severe grammatical scrambling and multiple forms of lexical scrambling.
+                </p>
+
+                <p><strong>Evaluation</strong>
+                    <br>The scrambled questions were tested on five LLMs: DeepSeek, Gemma3-4B, Gemma3-270M, Qwen2.5-0.5B and Qwen2.5-14B. The responses were collected to evaluate the accuracy of the right answer and the ability to recognize scrambled sentences, which is named the recognition rate. Accuracy was assessed using a Python script that checked whether responses contained the correct answer keywords. Responses detected as incorrect due to formatting or numeral differences were manually reviewed and corrected.</p>
+            </div>
+        </section>
+
+         <!-- Result Section -->
+        <section id="Result" class="Result">
+            <h2 class="section-title">Result</h2>
+            <div class="Result-container">
+                <div class="chart1">
+                    <picture>
+                        <img src="1.accuracy_chart.PNG" alt="accuracy_chart" width="50%" height="auto"/>
+                    </picture>
+                    <P>This figure shows the accuracy of the LLMs, indicating the correctness of the responses.The average accuracy is 67%. Gemma3-270M has the lowest accuracy at 21.7% and Qwen2.5-0.5B is also below average at 48.3%. DeepSeek achieves the highest accuracy at 96.7%, followed by Qwen2.5-14B at 90%, and Gemma3-4B. The results indicate that larger models tend to achieve higher accuracy. Although the number of parameters in DeepSeek is unknown, its superior accuracy implies that it was likely trained with more data than Qwen2.5-14B.</P>
                 </div>
-                <div class="profile">
-                    <figure>
-                        <picture>
-                            <img src="profile picture.PNG" alt="profile picture" width="100%" height="auto"/>
-                        </picture>
-                    </figure>
+                <div class="chart2">
+                    <picture>
+                        <img src="2.recognition_chart.PNG" alt="recogntion_chart" width="50%" height="auto"/>
+                    </picture>
+                    <P>This figure shows the successful recognition rate of the LLMs, referring to the ability to understand the scrambled sentences, even when the responses were incorrect. This analysis was added after manual checks showed that some LLMs catch the correct meaning but still give incorrect answers. The ranking is the same as in the accuracy figure: DeepSeek is first at 98.3%, Qwen2.5-14B is second at 93.3%, and Gemma3-4B is third at 83.3%. Qwen2.5-0.5B and Gemma3-270M remain far below the average, supporting the assumption that larger LLMs achieve higher successful recognition rates.</P>
+                </div>
+                <div class="chart3">
+                    <picture>
+                        <img src="3.comparison_chart.PNG" alt="recogntion_chart" width="50%" height="auto"/>
+                    </picture>
+                    <P>This figure combines the results, which show both accuracy and successful recognition rates for all LLMs. The figure shows that the successful recognition rates exceed the accuracy rates for all LLMs. This indicates LLMs may correctly understand scrambled sentences but fail to deliver the correct answer or fully meet user requirements. This phenomenon is clearly observable in Gemma3-270M, which shows the largest gap between the two rates. Sentences number 45 to 49 were completely unscrambled; however, Gemma3-270M only answered two correctly. It was the only LLM that failed to answer all of the unscrambled questions correctly. This reveals that Gemma3-270M struggles to generate high-quality responses.</P>
                 </div>
             </div>
         </section>
 
-        <!-- Comments Section -->
-        <section id="Comments" class="Comments">
-            <div class="container">
-                <h2 class="section-title">Canteens Comments</h2>
-                <div class="canteen-grid">
-                    <!--canteen 1-->
-                    <article class="canteen">
-                        <h3 class="canteen-name">AC1</h3>
-                        <div class="canteen-content">
-                            <div class="canteen-ratings">
-                                <p>Food variety: ★★★★★</p>
-                                <p>Taste: ★★★</p>
-                                <p>Price: ★★★★</p>
-                                <p>Environment: ★★★</p>
-                            </div>
-                            <div class="canteen-review">
-                                <p>This canteen offers a rich variety of foods. It has the lowest prices among the 3 canteens. The canteen is quite large and has many seats, but the seats is narrow and it’s usually crowded. The Starbucks in AC1 is recommended because it’s cheaper than external Starbucks stores.</p>
-                            </div>
-                        </div>
-                    </article>
-                    <!--canteen 2-->
-                     <article class="canteen">
-                        <h3 class="canteen-name">AC2</h3>
-                        <div class="canteen-content">
-                            <div class="canteen-ratings">
-                                <p>Food variety: ★★★★</p>
-                                <p>Taste: ★★★★</p>
-                                <p>Price: ★★★</p>
-                                <p>Environment: ★★★★★</p>
-                            </div>
-                            <div class="canteen-review">
-                                <p>Fewer food options and higher prices than AC1. Foods is nothing special, but the Hong Kong style milk tea is good. The canteen has many seats, which are quite spacious. It’s less crowded than AC1 and you can even see students studying here.</p>
-                            </div>
-                        </div>
-                    </article>
-                     <!--canteen 3-->
-                     <article class="canteen">
-                        <h3 class="canteen-name">AC3</h3>
-                        <div class="canteen-content">
-                            <div class="canteen-ratings">
-                                <p>Food variety: ★★★</p>
-                                <p>Taste: ★★★★</p>
-                                <p>Price: ★★★</p>
-                                <p>Environment: ★★★★★</p>
-                            </div>
-                            <div class="canteen-review">
-                                <p>AC3 has the fewest food options among the canteens. It’s relatively expensive, but the taste is better. Seats are limited, but more spacious than AC1. There are some view-facing seats, which are worth a try.</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+         <!-- Discussion Section -->
+        <section id="Discussion" class="Discussion">
+            <h2 class="section-title">Discussion</h2>
+            <div class="Discussion-container">
+                <P><li>The most difficult question in the test?</li>
+                    <br>"Scrambled sentence: Which day Firday after cemos?"
+                    <br>"Original sentence: Which day comes after Friday?"
+                    <br>It features syntactic scrambling plus 2 Typoglycemia: "Friday" kept its first and last letters but swapped "r" and "i"; the main verb kept its first letter and was scrambled. This is the only scrambled sentence that all LLMs failed to recognize. This sentence did not seem the most complex to me, but it surprised me that no LLM could answer it correctly.
+                </P>
+                <p><li> Superior LLM performance include all lesser capabilities?</li>
+                    <br>In the 6 questions where the second-best LLM Qwen2.5-14B failed, Gemma3-4B performed better, failing only 2 questions. This shows that higher-performing LLMs do not fully cover lower-performing models' capabilities. Different LLMs can develop strengths in specific domains or tasks.
+                </p>
             </div>
         </section>
+
+        <!-- Conculsion Section -->
+        <section id="Conculsion" class="Conculsion">
+            <h2 class="section-title">Conculsion</h2>
+            <div class="Conculsion-container">
+                <P>This scrambled sentence test results show that model size and training data strongly affect performance. Among the tested models, DeepSeek, Qwen2.5-14B, and Gemma3-4B performed well, with DeepSeek leading. The analysis indicates that LLMs' ability to generate high-quality responses depends on sufficient scale and data. Furthermore, a comprehensive evaluation should extend beyond basic answer accuracy. It is significant to assess LLMs' ability to understand user intent. The disparity between accuracy and recognition rate serves as an important indicator of a model's deeper language comprehension and reasoning capabilities. </P>
+            </div>
+        </section>
+
+        <!-- Reference Section -->
+        <section id="Reference" class="Reference">
+            <h2 class="section-title">Reference</h2>
+            <div class="Reference-container">
+                <P>Johnson, R. L., Perea, M., & Rayner, K. (2007). Transposed-letter effects in reading: Evidence from eye movements and parafoveal preview. Journal of Experimental Psychology: Human Perception and Performance, 33(1), 209. <a href="https://doi.org/10.1037/0096-1523.33.1.209">https://doi.org/10.1037/0096-1523.33.1.209</a>.</P>
+                <P>White, S. J., Johnson, R. L., Liversedge, S. P., & Rayner, K. (2008). Eye movements when reading transposed text: The importance of word-beginning letters. Journal of Experimental Psychology: Human Perception and Performance, 34(5), 1261-1276. <a href="https://doi.org/10.1037/0096-1523.34.5.1261">https://doi.org/10.1037/0096-1523.34.5.1261</a>.</P>
+                <P>Yu, M., Mao, J., Zhang, G., Ye, J., Fang, J., Zhong, A., Liu, Y., Liang, Y., Wang, K., & Wen, Q. (2024). Mind scramble: Unveiling large language model psychology via typoglycemia <a href="https://doi.org/10.48550/arXiv.2410.01677">https://doi.org/10.48550/arXiv.2410.01677</a>.</P>
+            </div>
+        </section>
+
     </div>         
 </body>
 </html>
